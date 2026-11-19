@@ -1,7 +1,7 @@
 # GiftCraft Studio · 礼创工坊
 
 Bilingual Codex plugin for branded gifts, packaging and supplier preparation.
-中英文品牌纪念品设计插件 · v1.0.5 · Vincent Chen
+中英文品牌纪念品设计插件 · v1.1.0 · Vincent Chen
 
 ## 安装 / Install
 
@@ -11,7 +11,7 @@ Bilingual Codex plugin for branded gifts, packaging and supplier preparation.
    Register the extracted local marketplace, then install:
 
 ```sh
-codex plugin marketplace add /absolute/path/to/GiftCraft_Studio_Plugin_1.0.5
+codex plugin marketplace add /absolute/path/to/GiftCraft_Studio_Plugin_1.1.0
 codex plugin add giftcraft-studio@giftcraft-local
 ```
 
@@ -30,8 +30,11 @@ If a standalone skill with the same name is installed, duplicate selectors may a
 - 精准修改 / Scoped revisions: change specified elements while preserving the rest.
 - 生产准备 / Production preparation: specifications, itemized costs, RFQs and QC checklists.
 
-先介绍功能，再收集行业、赠送对象、纪念场景、采购数量和单件预算；提醒上传官方Logo与参考图。收到简报后自动提出三方向并推荐一款，无需用户输入执行指令。
-Starts with capabilities and a five-field brief, then automatically proposes three directions and recommends one.
+简短开场后一次收集六项资料：品牌名称、行业、赠送对象、纪念场景、采购数量、单件预算。每轮提供五款不同礼品、按场景评分并推荐一款；不满意则根据反馈继续提出新的五款，直到满意。用户满意并确认出图、官方素材齐备后，五款各生成一张礼品本体效果图。
+Brief opening and six-field intake → five concepts with scenario-adjusted scores and one recommendation → feedback rounds until satisfied → explicit image authorization and official assets → five separate product-only images.
+
+预算或数量未知时按场景提供选项；不报数字成本估价、不承诺预算内，报价和交期由用户与制造商确认。默认排除食品酒类保健品、电池电子类和易碎笨重不便携带品；只预留个性化区域，不处理名单。精准改图出现额外变化时展示偏差，交用户决定是否修正。
+Scenario-specific planning bands, no numerical cost estimates or budget/lead-time promises. No personalization lists. Unintended image changes are shown for user decision.
 
 ## 生图备用流程 / Image fallback
 
@@ -40,7 +43,7 @@ Repeated failures produce a complete prompt for another image-capable chat or to
 
 ## 下载 / Download
 
-[完整插件ZIP / Complete plugin ZIP](GiftCraft_Studio_Plugin_1.0.5.zip)
+[完整插件ZIP / Complete plugin ZIP](GiftCraft_Studio_Plugin_1.1.0.zip)
 
 ## 验证 / Validate
 
@@ -50,8 +53,8 @@ Python 3.9+，仅使用标准库 / standard library only:
 python3 scripts/validate_plugin.py
 ```
 
-实际测试：Codex CLI识别、安装、启用通过；完整文件、相对路径和损坏输入检测通过。未验证新模型对话行为和实时生图恢复。
-Verified: CLI discovery, installation, enablement, resource integrity and invalid-package checks. Fresh model conversation behavior and live image-service recovery remain unverified.
+实际测试：Codex CLI识别、安装、启用通过；完整文件、相对路径和损坏输入检测通过。用户已反馈v1.1.0本机使用正常；自动检查覆盖安装和文件完整性，不代表图片服务可靠性已全面验证。
+Verified: CLI discovery, installation, enablement, resource integrity and invalid-package checks. The user reports successful local usage of v1.1.0. Automated checks verify package integrity and installation; comprehensive live image reliability is not established.
 
 完整源码及下列目录均包含在ZIP中 / Complete source and the following directories are bundled inside the ZIP.
 
@@ -59,10 +62,15 @@ Verified: CLI discovery, installation, enablement, resource integrity and invali
 
 - `.agents/plugins/marketplace.json`: marketplace catalog.
 - `plugins/giftcraft-studio/`: portable and Codex-compatible plugin manifests, icons and complete skill.
-- `plugins/giftcraft-studio/skills/giftcraft-studio/templates/`: 9 bilingual templates.
+- `plugins/giftcraft-studio/skills/giftcraft-studio/templates/`: 10 bilingual templates.
 - `plugins/giftcraft-studio/skills/giftcraft-studio/references/`: scoped edits, 6 industry examples and acceptance scenarios.
 
 GitHub distribution only; not published in OpenAI's official public plugin directory.
 此仓库为GitHub分发版本，并非OpenAI官方公共插件目录上架。
 
 [测试报告 / Test report](TEST_REPORT.md)
+
+## v1.1.0 更新 / Changes
+
+五款反馈循环、六项开场资料、五张独立产品图、动态评分、品牌背景与素材分检、单款失败提示词交付及用户决定精准修改偏差。
+Five-concept satisfaction loop, six-field intake, five separate visuals, dynamic scoring, separate brand/asset checks and partial-failure handoffs.
